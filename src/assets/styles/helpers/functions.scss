@@ -1,0 +1,35 @@
+@function hextorgb($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+@function em($pixels, $context: 16) {
+  @return calc($pixels / $context) * 1em;
+}
+
+@function rem($size, $context: 16) {
+  @return calc($size / $context) * 1rem;
+}
+
+// Convert px to em
+@function pxtoem($target, $context) {
+  @return calc($target / $context) + 0;
+}
+
+// Convert em to px
+@function emtopx($target, $context) {
+  @return calc($target * $context) + 0;
+}
+
+// Convert px to vw
+@function vw($target, $context) {
+  $vw-context: calc($context * 0.01) * 1px;
+
+  @return calc($target / $vw-context) * 1vw;
+}
+
+// Convert px to vh
+@function vh($target, $context) {
+  $vh-context: calc($context * 0.01) * 1px;
+
+  @return calc($target / $vh-context) * 1vh;
+}

@@ -1,0 +1,25 @@
+$aside-padding-desktop: rem(42);
+$aside-padding-tablet: rem(22);
+$aside-padding-mobile: rem(20);
+$max-container-width: 1280px;
+
+%container {
+  width: 100%;
+  max-width: $max-container-width;
+  padding-right: $aside-padding-mobile;
+  padding-left: $aside-padding-mobile;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media #{$tablet} {
+    padding-right: $aside-padding-tablet;
+    padding-left: $aside-padding-tablet;
+  }
+
+  @media #{$desktop} {
+    padding-right: $aside-padding-desktop;
+    padding-left: $aside-padding-desktop;
+  }
+}
+
+$header-height: rem(80);

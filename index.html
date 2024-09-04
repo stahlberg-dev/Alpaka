@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Альпака</title>
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+    <link rel="preload" href="/fonts/Roboto/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/fonts/Roboto/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="header page__header lock-padding">
+        <div class="header__container">
+          <div class="header__body">
+            <a class="header__logo" href="index.html">
+              <img
+                class="header__logo-image"
+                src="/images/logo.svg"
+                alt="логотип"
+              >
+            </a>
+            <nav class="header-menu header__menu">
+              <ul class="header-menu__list">
+                <li class="header-menu__item">
+                  <a class="header-menu__item-link" href="#">Главная</a>
+                </li>
+                <li class="header-menu__item header-menu__item_submenu" >
+                  <span class="header-menu__item-text">Основное меню</span>
+
+                  <div class="header-menu__submenu">
+                    <ul class="header-menu__submenu-list">
+                      <li class="header-menu__submenu-item">
+                        <a
+                          class="header-menu__submenu-item-link"
+                          href="#"
+                        >Заказать вёрстку</a>
+                      </li>
+
+                      <li class="header-menu__submenu-item">
+                        <a
+                          class="header-menu__submenu-item-link"
+                          href="#"
+                        >Отправить макет на проверку</a>
+                      </li>
+
+                      <li class="header-menu__submenu-item">
+                        <a
+                          class="header-menu__submenu-item-link"
+                          href="#"
+                        >Хочу работать у вас</a>
+                      </li>
+                      
+                      <li class="header-menu__submenu-item header-menu__submenu-item_submenu">
+                        <span
+                          class="header-menu__submenu-item-text"
+                        >Есть предложение по работе с клиентами</span>
+
+                        <div class="header-menu__sub-submenu">
+                          <ul class="header-menu__submenu-list">
+                            <li class="header-menu__submenu-item">
+                              <a
+                                class="header-menu__submenu-item-link"
+                                href="#"
+                              >У меня есть оффер</a>
+                            </li>
+
+                            <li class="header-menu__submenu-item">
+                              <a
+                                class="header-menu__submenu-item-link"
+                                href="#"
+                              >Сделать партнёром</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+            
+                <li class="header-menu__item">
+                  <a class="header-menu__item-link" href="#">Наши сервисы</a>
+                </li>
+                <li class="header-menu__item">
+                  <a class="header-menu__item-link" href="#">Контакты</a>
+                </li>
+              </ul>
+            </nav>
+
+            <a class="header__phone" href="tel:+13212223333">
+              <svg
+                class="header__phone-icon"
+                aria-hidden="true"
+              >
+                <use
+                  href="src/assets/sprites/sprite.svg#phone"
+                />
+              </svg>
+              <span class="header__phone-number">+1 (321) 222 - 33 -33</span>
+            </a>
+
+            <div class="header-burger header__burger">
+              <span class="header-burger__stripe"></span>
+              <span class="header-burger__stripe"></span>
+              <span class="header-burger__stripe"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="header__mobile-screen">
+          <nav class="header__mobile-menu">
+            <ul class="mobile-menu-list header__mobile-menu-list">
+              <li class="mobile-menu-list__item">
+                <a class="mobile-menu-list__item-link" href="#">Главная</a>
+              </li>
+
+              <li class="mobile-menu-list__item mobile-menu-list__item_submenu-section">
+                <div class="mobile-menu-list__submenu-section-title">
+                  <span>Основное меню</span>
+                </div>
+
+                <div class="mobile-menu-list__submenu-section-container">
+                  <ul class="mobile-menu-list__submenu">
+                    <li class="mobile-menu-list__submenu-item">
+                      <a 
+                        class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                        href="#"
+                      >Заказать вёрстку</a>
+                    </li>
+
+                    <li class="mobile-menu-list__submenu-item">
+                      <a 
+                        class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                        href="#"
+                      >Отправить макет на проверку</a>
+                    </li>
+
+                    <li class="mobile-menu-list__submenu-item">
+                      <a 
+                        class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                        href="#"
+                      >Хочу работать у вас</a>
+                    </li>
+
+                    <li class="mobile-menu-list__submenu-item">
+                      <div 
+                        class="mobile-menu-list__sub-submenu-section-title"
+                      >
+                        <span>Есть предложение по работе с клиентами</span>
+                      </div>
+
+                      <div class="mobile-menu-list__sub-submenu-section-container">
+                        <ul class="mobile-menu-list__sub-submenu">
+                          <li class="mobile-menu-list__submenu-item">
+                            <a 
+                              class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                              href="#"
+                            >У меня есть оффер</a>
+                          </li>
+                          <li class="mobile-menu-list__submenu-item">
+                            <a 
+                              class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                              href="#"
+                            >Сделать партнёром</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="mobile-menu-list__item">
+                <a class="mobile-menu-list__item-link" href="#">Наши сервисы</a>
+              </li>
+
+              <li class="mobile-menu-list__item">
+                <a class="mobile-menu-list__item-link" href="#">Контакты</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="page__main">
+        <section class="alpaka-section"> 
+          <picture class="alpaka-section__image-container">
+            <source media="(min-width: 768px)" srcset="/images/alpaka/alpaka-desktop.webp">
+            <img
+              class="alpaka-section__image"
+              src="/images/alpaka/alpaka-mobile.webp"
+              alt="Альпака"
+              loading="lazy"
+            >
+          </picture>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

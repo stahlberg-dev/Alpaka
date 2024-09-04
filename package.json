@@ -1,0 +1,20 @@
+{
+  "name": "alpaka",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "yarn svg-sprite && vite",
+    "build": "yarn svg-sprite && vite build",
+    "preview": "yarn svg-sprite && vite preview",
+    "svg-sprite": "svg-symbol-sprite -i src/assets/icons -o src/assets/sprites/sprite.svg -p \"\""
+  },
+  "devDependencies": {
+    "vite": "^5.3.1"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "sass": "^1.77.7",
+    "svg-symbol-sprite": "^1.5.2"
+  }
+}

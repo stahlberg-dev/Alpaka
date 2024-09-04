@@ -1,0 +1,14 @@
+.page {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+
+  &__main {
+      position: relative;
+      flex: 1 1 auto;
+      padding-top: $header-height;
+  }
+}
+
+@import './header.scss';
+@import "sections/alpaka.scss";
