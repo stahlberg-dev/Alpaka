@@ -21,7 +21,7 @@ body {
   font-family: $ff-default;
   color: $light;
 
-  &.locked {
+  &.isLocked {
     overflow: hidden;
 
     &::after {
@@ -38,7 +38,7 @@ body {
       pointer-events: none;
     }
 
-    &.disable-pointer::after {
+    &.isPointerDisabled::after {
       z-index: 300;
       pointer-events: auto;
     }

@@ -12,7 +12,7 @@
 
   <body>
     <div class="page">
-      <header class="header page__header lock-padding">
+      <header class="header page__header js-lock-padding">
         <div class="header__container">
           <div class="header__body">
             <a class="header__logo" href="index.html">
@@ -101,7 +101,7 @@
               <span class="header__phone-number">+1 (321) 222 - 33 -33</span>
             </a>
 
-            <div class="header-burger header__burger">
+            <div class="header-burger header__burger js-burger">
               <span class="header-burger__stripe"></span>
               <span class="header-burger__stripe"></span>
               <span class="header-burger__stripe"></span>
@@ -109,59 +109,79 @@
           </div>
         </div>
 
-        <div class="header__mobile-screen">
+        <div class="header__mobile-screen js-mobile-screen">
           <nav class="header__mobile-menu">
-            <ul class="mobile-menu-list header__mobile-menu-list">
+            <ul class="mobile-menu-list header__mobile-menu-list js-accordion">
               <li class="mobile-menu-list__item">
-                <a class="mobile-menu-list__item-link" href="#">Главная</a>
+                <a class="mobile-menu-list__item-link js-menu-link" href="#">Главная</a>
               </li>
 
-              <li class="mobile-menu-list__item mobile-menu-list__item_submenu-section">
-                <div class="mobile-menu-list__submenu-section-title">
+              <li class="mobile-menu-list__item js-accordion-section">
+                <div 
+                  class="mobile-menu-list__submenu-section-title
+                    js-accordion-section-title"
+                >
                   <span>Основное меню</span>
                 </div>
 
-                <div class="mobile-menu-list__submenu-section-container">
-                  <ul class="mobile-menu-list__submenu">
+                <div 
+                  class="mobile-menu-list__submenu-section-container
+                    js-accordion-section-container"
+                >
+                  <ul class="mobile-menu-list__submenu js-subaccordion">
                     <li class="mobile-menu-list__submenu-item">
                       <a 
-                        class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                        class="mobile-menu-list__item-link
+                          mobile-menu-list__item-link_submenu
+                          js-menu-link" 
                         href="#"
                       >Заказать вёрстку</a>
                     </li>
 
                     <li class="mobile-menu-list__submenu-item">
                       <a 
-                        class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                        class="mobile-menu-list__item-link 
+                          mobile-menu-list__item-link_submenu
+                          js-menu-link" 
                         href="#"
                       >Отправить макет на проверку</a>
                     </li>
 
                     <li class="mobile-menu-list__submenu-item">
                       <a 
-                        class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                        class="mobile-menu-list__item-link 
+                          mobile-menu-list__item-link_submenu
+                          js-menu-link" 
                         href="#"
                       >Хочу работать у вас</a>
                     </li>
 
-                    <li class="mobile-menu-list__submenu-item">
+                    <li class="mobile-menu-list__submenu-item js-subaccordion-secton">
                       <div 
-                        class="mobile-menu-list__sub-submenu-section-title"
+                        class="mobile-menu-list__sub-submenu-section-title 
+                          js-subaccordion-secton-title"
                       >
                         <span>Есть предложение по работе с клиентами</span>
                       </div>
 
-                      <div class="mobile-menu-list__sub-submenu-section-container">
-                        <ul class="mobile-menu-list__sub-submenu">
+                      <div 
+                        class="mobile-menu-list__sub-submenu-section-container
+                          js-subaccordion-secton-container"
+                      >
+                        <ul class="mobile-menu-list__sub-submenu js-subaccordion-list">
                           <li class="mobile-menu-list__submenu-item">
                             <a 
-                              class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                              class="mobile-menu-list__item-link
+                                mobile-menu-list__item-link_submenu
+                                js-menu-link" 
                               href="#"
                             >У меня есть оффер</a>
                           </li>
                           <li class="mobile-menu-list__submenu-item">
                             <a 
-                              class="mobile-menu-list__item-link mobile-menu-list__item-link_submenu" 
+                              class="mobile-menu-list__item-link
+                                mobile-menu-list__item-link_submenu
+                                js-menu-link" 
                               href="#"
                             >Сделать партнёром</a>
                           </li>
@@ -173,11 +193,11 @@
               </li>
 
               <li class="mobile-menu-list__item">
-                <a class="mobile-menu-list__item-link" href="#">Наши сервисы</a>
+                <a class="mobile-menu-list__item-link js-menu-link" href="#">Наши сервисы</a>
               </li>
 
               <li class="mobile-menu-list__item">
-                <a class="mobile-menu-list__item-link" href="#">Контакты</a>
+                <a class="mobile-menu-list__item-link js-menu-link" href="#">Контакты</a>
               </li>
             </ul>
           </nav>

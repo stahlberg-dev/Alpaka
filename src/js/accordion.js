@@ -1,161 +1,163 @@
 export class Accordion {
+  constructor(config) {
+    this.accordionClass = config.accordionClass;
+    this.sectionClass = config.sectionClass;
+    this.activeSectionClass = config.activeSectionClass;
+    this.sectionTitleClass = config.sectionTitleClass;
+    this.sectionContentWrapperClass = config.sectionContentWrapperClass;
+    this.sectionContentClass = config.sectionContentClass;
+    this.showHideTime = config.showHideTime;
+    this.onLoadActiveSectionNums = config.onLoadActiveSectionNums;
+    this.subAccordions = config.subAccordions;
+  }
 
-    constructor(config) {
-        this.accordionClassName = config.accordionClassName;
-        this.sectionClassName = config.sectionClassName;
-        this.activeSectionClassName = config.activeSectionClassName;
-        this.sectionTitleClassName = config.sectionTitleClassName;
-        this.sectionContentWrapperClassName = config.sectionContentWrapperClassName;
-        this.sectionContentClassName = config.sectionContentClassName;
-        this.showHideTime = config.showHideTime;
-        this.onLoadActiveSectionNums = config.onLoadActiveSectionNums;
-        this.subAccordions = config.subAccordions;
-    }
+  onLoad({
+    sectionClass,
+    activeSectionClass,
+    sectionContentWrapperClass,
+    sectionContentClass,
+    showHideTime,
+    onLoadActiveSectionNums,
+  }) {
+    const sections = document.querySelectorAll(sectionClass);
+    const sectionContentWrappers = document.querySelectorAll(
+      sectionContentWrapperClass
+    );
+    const sectionContents = document.querySelectorAll(sectionContentClass);
 
-    onLoad({
-        sectionClassName, 
-        activeSectionClassName,
-        sectionContentWrapperClassName,
-        sectionContentClassName,
-        showHideTime, 
-        onLoadActiveSectionNums
-    }) {
+    sectionContentWrappers.forEach((sectionContentWrapper) => {
+      sectionContentWrapper.style.maxHeight = "0px";
+      sectionContentWrapper.style.overflow = "hidden";
+      sectionContentWrapper.style.transition = `max-height ${showHideTime}ms ease`;
+    });
 
-        const sections = document.querySelectorAll(sectionClassName);
-        const sectionContentWrappers = document.querySelectorAll(sectionContentWrapperClassName);
-        const sectionContents = document.querySelectorAll(sectionContentClassName);
+    sectionContents.forEach((sectionContent) => {
+      sectionContent.style.display = "none";
+    });
 
-        sectionContentWrappers.forEach(sectionContentWrapper => {
+    onLoadActiveSectionNums?.forEach((num) => {
+      if (!sections?.[num]) return;
 
-            sectionContentWrapper.style.maxHeight = '0px';
-            sectionContentWrapper.style.overflow = 'hidden';
-            sectionContentWrapper.style.transition = `max-height ${showHideTime}ms ease`;
+      const contentWrapper = sections[num].querySelector(
+        sectionContentWrapperClass
+      );
+      const content = sections[num].querySelector(sectionContentClass);
 
-        });
+      sections[num].classList.add(activeSectionClass.slice(1));
+      content.style.display = "block";
+      contentWrapper.style.maxHeight = "";
+    });
+  }
 
-        sectionContents.forEach(sectionContent => {
+  onClick({
+    accordionClass,
+    sectionClass,
+    activeSectionClass,
+    sectionTitleClass,
+    sectionContentWrapperClass,
+    sectionContentClass,
+    showHideTime,
+    subAccordions = [],
+  }) {
+    const accordion = document.querySelector(accordionClass);
+    const titles = document.querySelectorAll(sectionTitleClass);
 
-            sectionContent.style.display = 'none';
+    titles.forEach((title) => {
+      title.addEventListener("click", function (event) {
+        const activeSections = document.querySelectorAll(activeSectionClass);
+        const closestSection = event.target.closest(sectionClass);
+        const isActive = closestSection?.classList.contains(
+          activeSectionClass.slice(1)
+        );
 
-        });
+        accordion.style.pointerEvents = "none";
 
-        onLoadActiveSectionNums?.forEach(num => {
+        setTimeout(() => {
+          accordion.style.pointerEvents = "auto";
+        }, showHideTime);
 
-            if ( !(sections?.[num]) ) return;
+        activeSections.forEach((activeSection) => {
+          const activeSectionContentWrapper = activeSection.querySelector(
+            sectionContentWrapperClass
+          );
+          const activeSectionContent =
+            activeSection.querySelector(sectionContentClass);
 
-            const contentWrapper = sections[num].querySelector(sectionContentWrapperClassName);
-            const content = sections[num].querySelector(sectionContentClassName);
+          activeSection.classList.remove(activeSectionClass.slice(1));
 
-            sections[num].classList.add( activeSectionClassName.slice(1) );
-            content.style.display = 'block';
-            contentWrapper.style.maxHeight = '';
+          activeSectionContentWrapper.style.maxHeight =
+            activeSectionContent.offsetHeight + "px";
 
-        } );
-        
-    }
+          setTimeout(() => {
+            activeSectionContentWrapper.style.maxHeight = "0px";
+          }, 0);
 
-    onClick({
-        accordionClassName,
-        sectionClassName, 
-        activeSectionClassName, 
-        sectionTitleClassName, 
-        sectionContentWrapperClassName,
-        sectionContentClassName,
-        showHideTime, 
-        subAccordions = [],
-    }) {
+          setTimeout(() => {
+            activeSectionContent.style.display = "none";
+          }, showHideTime);
 
-        const accordion = document.querySelector(accordionClassName);
-        const titles = document.querySelectorAll(sectionTitleClassName);
+          subAccordions.forEach((subAccordion) => {
+            if (
+              !subAccordion?.activeSectionClass ||
+              !subAccordion?.sectionContentWrapperClass ||
+              !(
+                subAccordion?.sectionContentClass || !subAccordion?.showHideTime
+              )
+            )
+              return;
 
-        titles.forEach(title => {
+            const activeSubSections = activeSection.querySelectorAll(
+              subAccordion.activeSectionClass
+            );
 
-            title.addEventListener("click", function(event) {
+            activeSubSections.forEach((activeSubSection) => {
+              const activeSubWrapper = activeSubSection.querySelector(
+                subAccordion.sectionContentWrapperClass
+              );
+              const activeSubContent = activeSubSection.querySelector(
+                subAccordion.sectionContentClass
+              );
 
-                const activeSections = document.querySelectorAll(activeSectionClassName);
-                const closestSection = event.target.closest(sectionClassName);
-                const isActive = closestSection?.classList.contains( activeSectionClassName.slice(1) );
+              activeSubSection.classList.remove(
+                subAccordion.activeSectionClass.slice(1)
+              );
 
-                accordion.style.pointerEvents = 'none';
+              activeSubWrapper.style.maxHeight =
+                activeSectionContent.offsetHeight + "px";
 
-                setTimeout(() => {
-                    accordion.style.pointerEvents = 'auto';
-                }, showHideTime);
+              setTimeout(() => {
+                activeSubWrapper.style.maxHeight = "0px";
+              }, 0);
 
-                activeSections.forEach(activeSection => {
-
-                    const activeSectionContentWrapper = activeSection.querySelector(sectionContentWrapperClassName);
-                    const activeSectionContent = activeSection.querySelector(sectionContentClassName);
-
-                    activeSection.classList.remove( activeSectionClassName.slice(1) );
-
-                    activeSectionContentWrapper.style.maxHeight = activeSectionContent.offsetHeight + 'px';
-
-                    setTimeout(() => {
-                        activeSectionContentWrapper.style.maxHeight = '0px';
-                    }, 0);
-
-                    setTimeout(() => {
-                        activeSectionContent.style.display = 'none';
-                    }, showHideTime);               
-
-                    subAccordions.forEach(subAccordion => {
-
-                        if ( !(subAccordion?.activeSectionClassName)
-                             || !(subAccordion?.sectionContentWrapperClassName) 
-                             || !(subAccordion?.sectionContentClassName
-                             || !(subAccordion?.showHideTime) ) ) return;
-    
-                        const activeSubSections = activeSection.querySelectorAll(subAccordion.activeSectionClassName);
-    
-                        activeSubSections.forEach(activeSubSection => {
-    
-                            const activeSubWrapper = activeSubSection.querySelector(subAccordion.sectionContentWrapperClassName);
-                            const activeSubContent = activeSubSection.querySelector(subAccordion.sectionContentClassName);
-    
-                            activeSubSection.classList.remove( subAccordion.activeSectionClassName.slice(1) );
-    
-                            activeSubWrapper.style.maxHeight = activeSectionContent.offsetHeight + 'px';
-    
-                            setTimeout(() => {
-                                activeSubWrapper.style.maxHeight = '0px';
-                            }, 0);
-    
-                            setTimeout(() => {
-                                activeSubContent.style.display = 'none';
-                            }, subAccordion.showHideTime);
-    
-                        });
-
-                    });
-
-                });
-
-                if (closestSection && !isActive) {
-
-                    const closestSectionContentWrapper = closestSection.querySelector(sectionContentWrapperClassName);
-                    const closestSectionContent = closestSection.querySelector(sectionContentClassName);
-
-                    closestSection.classList.add( activeSectionClassName.slice(1) );
-                    closestSectionContent.style.display = 'block';
-                    closestSectionContentWrapper.style.maxHeight = closestSectionContent.offsetHeight + 'px';
-
-                    setTimeout(() => {
-                        closestSectionContentWrapper.style.maxHeight = '';
-                    }, showHideTime);
-
-                } 
-            
+              setTimeout(() => {
+                activeSubContent.style.display = "none";
+              }, subAccordion.showHideTime);
             });
-
+          });
         });
 
-    }
-    
-    init() {
+        if (closestSection && !isActive) {
+          const closestSectionContentWrapper = closestSection.querySelector(
+            sectionContentWrapperClass
+          );
+          const closestSectionContent =
+            closestSection.querySelector(sectionContentClass);
 
-        this.onLoad(this);
-        this.onClick(this);
+          closestSection.classList.add(activeSectionClass.slice(1));
+          closestSectionContent.style.display = "block";
+          closestSectionContentWrapper.style.maxHeight =
+            closestSectionContent.offsetHeight + "px";
 
-    }
+          setTimeout(() => {
+            closestSectionContentWrapper.style.maxHeight = "";
+          }, showHideTime);
+        }
+      });
+    });
+  }
+
+  init() {
+    this.onLoad(this);
+    this.onClick(this);
+  }
 }

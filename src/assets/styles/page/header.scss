@@ -170,7 +170,7 @@
       }
     }
 
-    &_active {
+    &.isMobileScreenActive {
       right: 0;
       left: 0;
       transition:
@@ -418,7 +418,7 @@
     transform: translate(-50%, -50%);
     transition: transform $default-transition;
 
-    #{$block}_active & {
+    #{$block}.isBurgerActive & {
       transform: scale(0);
     }
 
@@ -431,7 +431,7 @@
 
     }
 
-    #{$block}_active & {
+    #{$block}.isBurgerActive & {
       &:first-child {
         transform: translate(-50%, -50%) rotate(-45deg);
       }
@@ -484,7 +484,7 @@
   }
 
   &__submenu-section-title {
-    #{$block}__item_active & {
+    #{$block}__item.isSectionActive & {
       background-color: $black;
 
       &::after {
@@ -504,7 +504,7 @@
       background-color: $black;
     }
 
-    #{$block}__submenu-item_active & {
+    #{$block}__submenu-item.isSubSectionActive & {
       background-color: $black;
 
       &::after {

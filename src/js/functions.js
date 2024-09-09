@@ -1,42 +1,33 @@
-export function lockBody (lockPaddingElements, disablePointerDelay = 0) {
+export function lockBody(lockPaddingElements, disablePointerDelay = 0) {
+  if (!document.body.classList.contains("isLocked")) {
+    const lockPaddingValue =
+      window.innerWidth - document.documentElement.clientWidth + "px";
 
-  if (!document.body.classList.contains('locked')) {
+    document.body.style.paddingRight = lockPaddingValue;
 
-      const lockPaddingValue = window.innerWidth - document.documentElement.clientWidth + 'px';
-
-      document.body.style.paddingRight = lockPaddingValue;
-      
-      lockPaddingElements.forEach(item => {
-          item.style.paddingRight = lockPaddingValue;
-      });
-
+    lockPaddingElements.forEach((item) => {
+      item.style.paddingRight = lockPaddingValue;
+    });
   }
-  
-  document.body.className = 'locked disable-pointer';
+
+  document.body.className = "isLocked isPointerDisabled";
 
   setTimeout(() => {
-
-      document.body.classList.remove('disable-pointer');
-
+    document.body.classList.remove("isPointerDisabled");
   }, disablePointerDelay);
-
 }
 
-export function unlockBody (lockPaddingElements, unlockDelay = 0) {
+export function unlockBody(lockPaddingElements, unlockDelay = 0) {
+  if (document.body.classList.contains("isPointerDisabled")) return;
 
-  if (document.body.classList.contains('disable-pointer')) return;
-
-  document.body.classList.add('disable-pointer');
+  document.body.classList.add("isPointerDisabled");
 
   setTimeout(() => {
+    document.body.className = "";
+    document.body.style.paddingRight = "0px";
 
-      document.body.className = '';
-      document.body.style.paddingRight = '0px';
-
-      lockPaddingElements.forEach(item => {
-          item.style.paddingRight = '0px';
-      });
-
+    lockPaddingElements.forEach((item) => {
+      item.style.paddingRight = "0px";
+    });
   }, unlockDelay);
-
 }

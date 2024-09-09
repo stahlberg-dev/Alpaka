@@ -1,39 +1,39 @@
 import './assets/styles/main.scss'
 import { Burger } from "./js/burger.js";
-import {Accordion} from "./js/accordion.js";
+import { Accordion } from "./js/accordion.js";
 
 new Burger({
-  buttonClass: '.header-burger',
-  activeButtonClass: '.header-burger_active',
-  menuClass: '.header__mobile-screen',
-  activeMenuClass: '.header__mobile-screen_active',
+  buttonClass: '.js-burger',
+  activeButtonClass: '.isBurgerActive',
+  menuClass: '.js-mobile-screen',
+  activeMenuClass: '.isMobileScreenActive',
   closingElementClasses: [ 
-      '.mobile-menu-list__item-link',  
-      '.header__mobile-screen_active'
+      '.js-menu-link',  
+      '.isMobileScreenActive'
   ],
-  lockPaddingElementClass: '.lock-padding',
+  lockPaddingElementClass: '.js-lock-padding',
   showHideTime: 300,
 }).init();
 
 const headerMenuSubAccordion = new Accordion({
-  accordionClassName: '.mobile-menu-list', 
-  sectionClassName: '.mobile-menu-list__submenu-item', 
-  activeSectionClassName: '.mobile-menu-list__submenu-item_active', 
-  sectionTitleClassName: '.mobile-menu-list__sub-submenu-section-title', 
-  sectionContentWrapperClassName: '.mobile-menu-list__sub-submenu-section-container',
-  sectionContentClassName: '.mobile-menu-list__sub-submenu',
+  accordionClass: '.js-accordion', 
+  sectionClass: '.js-subaccordion-secton', 
+  activeSectionClass: '.isSubSectionActive', 
+  sectionTitleClass: '.js-subaccordion-secton-title', 
+  sectionContentWrapperClass: '.js-subaccordion-secton-container',
+  sectionContentClass: '.js-subaccordion-list',
   showHideTime: 500,
 });
 
 headerMenuSubAccordion.init();
 
 const headerMenuAccordion = new Accordion({
-  accordionClassName: '.mobile-menu-list',
-  sectionClassName: '.mobile-menu-list__item_submenu-section', 
-  activeSectionClassName: '.mobile-menu-list__item_active', 
-  sectionTitleClassName: '.mobile-menu-list__submenu-section-title', 
-  sectionContentWrapperClassName: '.mobile-menu-list__submenu-section-container',
-  sectionContentClassName: '.mobile-menu-list__submenu',
+  accordionClass: '.js-accordion',
+  sectionClass: '.js-accordion-section', 
+  activeSectionClass: '.isSectionActive', 
+  sectionTitleClass: '.js-accordion-section-title', 
+  sectionContentWrapperClass: '.js-accordion-section-container',
+  sectionContentClass: '.js-subaccordion',
   showHideTime: 500,
   subAccordions: [headerMenuSubAccordion],
 });
